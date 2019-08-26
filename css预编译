@@ -1,0 +1,76 @@
+参考资料：
+https://blog.csdn.net/joehonv/article/details/81699572
+目标：提供 CSS 缺失的样式层复用机制、减少冗余代码，提高样式代码的可维护性
+
+一、基本语法
+  Less & SCSS：
+  .box {
+    display: block;
+  }
+
+  Sass：
+  .box
+    display: block
+
+  Stylus：
+  .box
+    display: block
+    
+    
+二、嵌套语法 
+  三者的嵌套语法都是一致的，甚至连引用父级选择器的标记 & 也相同。区别只是 Sass 和 Stylus 可以用没有大括号的方式书写。
+  .a {
+    &.b {
+      color: red;
+    }
+  }
+  
+  
+ 三、选择器引用
+  三者都支持用 & 在嵌套的规则集中引用上层的选择器，这可以是嵌套书写 CSS 时的「惯例」了。语法相同，但是逻辑上有些许差异。在一个选择器中用两次以上 & 且父选择器是一个列表时，Less 会对选择器进行排列组合，而 Sass 和 Stylus 不会这么做。
+  除了 &，Sass 和 Stylus 更进一步，分别用 @at-root 和 / 符号作为嵌套时「根」规则集的选择器引用。
+  <article class="post">
+  <h1>我是一篇文章</h1>
+  <section>
+    <h1 class="section-title"><a href="#s1" class="section-link">#</a>我是章节标题</h1>
+    <p>我只是一个<em>例子</em>。</p>
+  </section>
+  </article>
+  
+  .post
+  section
+    .section-title
+      color #333
+      /.post .section-link
+        color #999
+    /* other section styles */
+
+  /* other post styles */
+  css
+  .post section .section-title {
+    color: #333;
+    }
+    .post .section-link {
+      color: #999;
+   }
+  
+ 四、变量
+  Less：
+  @red: #c00;
+  strong {
+    color: @red;
+  }
+  
+  Sass：
+  $red: #c00;
+  strong {
+    color: $red;
+  }
+  
+  Stylus：
+  red = #c00
+  strong
+    color: red
+  
+  
+  
