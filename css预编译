@@ -117,6 +117,57 @@ https://blog.csdn.net/joehonv/article/details/81699572
 .warning
   @extend .message
   color: #e2e21e
+  
+  
+ 十一、placeholder
+ 简单来说就是一个声明块（预处理器 DSL 中的声明块，包含其下嵌套规则），但是不会在最终的 CSS 中输出
+ sass
+   %red-card {
+    border: 1px solid #300;
+    background-color: #ecc;
+    color: #c00;
+  }
+
+  .alert {
+    @extend %red-card;
+  }
+  
+  
+  十二、函数
+  Sass 中自定义函数需要使用 @function 指令，并用 @return 指令返回结果：
+  @function golden-ratio($n) {
+  @return $n * 0.618;
+  }
+
+  .golden-box {
+    width: 200px;
+    height: golden-ratio(200px);
+  }
+  
+  在 Stylus 中，这些都是隐含的，最后一个表达式的值会作为返回值：
+  golden-ratio(n)
+  n * 0.618
+
+  .golden-box
+    width: 200px
+    height: golden-ratio(@width)
+    
+   
+  十三、逻辑控制
+  Sass 中通过常见的 @if、@else if、@else 实现条件分支，通过 @for、@each、@while 实现循环，配合 map 和 list 这两种数据类型可以轻松地实现多数编程语言提供的功能。
+
+  在 Stylus 中，不需要使用 @ 规则，提供了 if、else if、else、unless、for...in 来实现类似功能，语法比 Sass 更简洁灵活。
+
+  再来看 Less，上面说到的功能 Less 都没有提供。那在 Less 中如何进行逻辑控制呢？Less 中只有一个方式：使用 mixin。
+  
+  十四、总结
+   Less 从语言特性的设计到功能的健壮程度和另外两者相比都有一些缺陷
+   Sass 在三者之中历史最久，也吸收了其他两者的一些优点。从功能上来说 Sass 大而全，语义明晰但是代码很容易显得累赘。
+   Stylus 的语法非常灵活，很多语义都是根据上下文隐含的。基于 Stylus 可以写出非常简洁的代码，但对使用团队的开发素养要求也更高，更需要有良好的开发规范或约定
+  
+
+  
+  
  
  
   
