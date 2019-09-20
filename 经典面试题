@@ -1,0 +1,38 @@
+参考资料：
+https://www.toutiao.com/c/user/2361373079386884/#mid=1644978878588942
+
+1、一个div垂直居中
+其距离屏幕左右两边各10px
+其高度始终是宽度的50%
+div中有文本'A'
+其font—size:20px
+文本水平垂直居中
+
+.Abox{
+
+margin-left:10px;
+
+width: calc(100vw - 20px);
+
+height: calc(50vw - 10px);
+
+position: absolute;
+
+background: yellow;
+
+top:50%;
+
+transform: translateY(-50%);
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+font-size: 20px;
+
+}
+知识点：
+calc() 函数用于动态计算长度值。width: calc(100% - 100px);
+transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
